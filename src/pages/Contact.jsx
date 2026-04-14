@@ -1,6 +1,5 @@
 import { useState, useRef } from 'react';
 import FadeInUp from '../components/FadeInUp';
-import DribbbleAnimation from '../components/DribbbleAnimation';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 
 const Contact = () => {
@@ -58,44 +57,25 @@ const Contact = () => {
 
   return (
     <div className="bg-white">
-      <style>{`
-        @keyframes slideInDown {
-          from {
-            opacity: 0;
-            transform: translateY(-30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @keyframes slideInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .banner-overlay {
-          animation: slideInDown 0.8s ease-out;
-        }
-      `}</style>
-      {/* Banner Section with Animation */}
+      {/* Banner Section with Background Image */}
       <section className="relative bg-gradient-to-br from-brand-secondary via-gray-900 to-brand-secondary text-white py-60 md:py-24 lg:py-32 overflow-hidden">
-        <div className="banner-overlay absolute inset-0 bg-gradient-to-r from-brand-secondary via-brand-secondary/70 to-transparent"></div>
+        <div className="absolute inset-0">
+          <img 
+            src="/contact image.png" 
+            alt="Contact Banner" 
+            className="w-full h-full object-cover"
+            onError={(e) => { e.target.style.display = 'none'; }}
+          />
+        </div>
         
-        {/* Animated Geometric Background */}
-        <div className="absolute inset-0 hidden md:block md:w-1/2 md:right-0">
-          <DribbbleAnimation />
+        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 right-20 w-96 h-96 bg-brand-primary rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-primary rounded-full blur-3xl"></div>
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center md:text-left max-w-2xl">
+          <div className="text-center">
             <FadeInUp>
               <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-2 md:mb-4 text-white">
                 <span>Contact </span>
@@ -103,7 +83,7 @@ const Contact = () => {
               </h1>
             </FadeInUp>
             <FadeInUp>
-              <p className="text-xs sm:text-sm md:text-lg lg:text-xl text-gray-200">
+              <p className="text-xs sm:text-sm md:text-lg lg:text-xl text-gray-200 max-w-2xl mx-auto">
                 We develop websites worldwide
               </p>
             </FadeInUp>

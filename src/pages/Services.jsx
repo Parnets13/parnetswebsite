@@ -1,7 +1,6 @@
 import { Code, Smartphone, ShoppingCart, Brain, Palette, ArrowUpRight, MessageSquare, Wrench } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import FadeInUp from '../components/FadeInUp';
-import DribbbleAnimation from '../components/DribbbleAnimation';
 
 const Services = () => {
   const services = [
@@ -154,59 +153,9 @@ const Services = () => {
             transform: scale(1);
           }
         }
-
-        @keyframes rotateShape {
-          0% {
-            transform: rotate(0deg) scale(1);
-          }
-          50% {
-            transform: rotate(180deg) scale(1.1);
-          }
-          100% {
-            transform: rotate(360deg) scale(1);
-          }
-        }
-
-        @keyframes floatUp {
-          0%, 100% {
-            transform: translateY(0px);
-            opacity: 0.3;
-          }
-          50% {
-            transform: translateY(-40px);
-            opacity: 0.8;
-          }
-        }
-
-        @keyframes slideRight {
-          0%, 100% {
-            transform: translateX(0px);
-            opacity: 0.4;
-          }
-          50% {
-            transform: translateX(60px);
-            opacity: 0.7;
-          }
-        }
-
-        @keyframes pulse {
-          0%, 100% {
-            r: 40px;
-            opacity: 0.3;
-          }
-          50% {
-            r: 60px;
-            opacity: 0.1;
-          }
-        }
-
-        @keyframes drawLine {
-          0% {
-            stroke-dashoffset: 300;
-          }
-          100% {
-            stroke-dashoffset: 0;
-          }
+        
+        .banner-image {
+          animation: fadeInScale 1s ease-out;
         }
         
         .banner-content {
@@ -216,91 +165,18 @@ const Services = () => {
         .banner-overlay {
           animation: slideInDown 0.8s ease-out;
         }
-
-        .animation-wrapper {
-          position: absolute;
-          right: 0;
-          top: 0;
-          width: 50%;
-          height: 100%;
-          overflow: hidden;
-        }
-
-        svg {
-          width: 100%;
-          height: 100%;
-          position: absolute;
-        }
-
-        .geometric-circle {
-          animation: rotateShape 8s linear infinite;
-          transform-origin: center;
-        }
-
-        .geometric-line {
-          stroke-dasharray: 300;
-          animation: drawLine 3s ease-in-out infinite;
-        }
-
-        .float-element {
-          animation: floatUp 4s ease-in-out infinite;
-        }
-
-        .slide-element {
-          animation: slideRight 5s ease-in-out infinite;
-        }
-
-        .pulse-circle {
-          animation: pulse 3s ease-in-out infinite;
-        }
-
-        @media (max-width: 768px) {
-          .animation-wrapper {
-            display: none;
-          }
-        }
       `}</style>
       
-      {/* Hero Banner with Geometric Animation */}
+      {/* Hero Banner */}
       <section className="relative bg-gradient-to-br from-brand-secondary via-gray-900 to-brand-secondary text-white py-60 md:py-20 lg:py-32 overflow-hidden">
-        <div className="banner-overlay absolute inset-0 bg-gradient-to-r from-brand-secondary to-transparent"></div>
-        
-        {/* Animated Geometric Background */}
-        <div className="animation-wrapper hidden md:block">
-          <svg viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice">
-            {/* Background circles with pulse effect */}
-            <circle cx="500" cy="150" r="40" fill="none" stroke="rgba(250, 140, 36, 0.3)" strokeWidth="2" className="pulse-circle" />
-            <circle cx="550" cy="400" r="50" fill="none" stroke="rgba(250, 140, 36, 0.2)" strokeWidth="2" className="pulse-circle" style={{animationDelay: '1s'}} />
-            <circle cx="480" cy="650" r="35" fill="none" stroke="rgba(250, 140, 36, 0.25)" strokeWidth="2" className="pulse-circle" style={{animationDelay: '2s'}} />
-            
-            {/* Animated geometric shapes */}
-            <g className="geometric-circle" style={{animationDelay: '0s'}}>
-              <circle cx="520" cy="200" r="60" fill="none" stroke="rgba(250, 140, 36, 0.4)" strokeWidth="2" />
-              <circle cx="520" cy="200" r="45" fill="none" stroke="rgba(250, 140, 36, 0.3)" strokeWidth="1" />
-            </g>
-
-            <g className="geometric-circle" style={{animationDelay: '2s'}}>
-              <polygon points="480,500 530,480 550,530 500,550" fill="none" stroke="rgba(250, 140, 36, 0.35)" strokeWidth="2" />
-            </g>
-
-            {/* Animated lines */}
-            <line x1="450" y1="100" x2="550" y2="200" stroke="rgba(250, 140, 36, 0.3)" strokeWidth="2" className="geometric-line" style={{animationDelay: '0s'}} />
-            <line x1="500" y1="300" x2="580" y2="350" stroke="rgba(250, 140, 36, 0.25)" strokeWidth="2" className="geometric-line" style={{animationDelay: '0.5s'}} />
-            <line x1="470" y1="600" x2="550" y2="700" stroke="rgba(250, 140, 36, 0.3)" strokeWidth="2" className="geometric-line" style={{animationDelay: '1s'}} />
-
-            {/* Floating elements */}
-            <circle cx="520" cy="300" r="8" fill="rgba(250, 140, 36, 0.6)" className="float-element" />
-            <circle cx="490" cy="550" r="6" fill="rgba(250, 140, 36, 0.5)" className="float-element" style={{animationDelay: '1s'}} />
-            <circle cx="540" cy="700" r="7" fill="rgba(250, 140, 36, 0.55)" className="float-element" style={{animationDelay: '2s'}} />
-
-            {/* Sliding elements */}
-            <rect x="450" y="400" width="80" height="3" fill="rgba(250, 140, 36, 0.4)" className="slide-element" />
-            <rect x="480" y="250" width="60" height="2" fill="rgba(250, 140, 36, 0.35)" className="slide-element" style={{animationDelay: '1.5s'}} />
-          </svg>
+        <div className="banner-overlay absolute inset-0 bg-black/30"></div>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 right-20 w-96 h-96 bg-brand-primary rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-primary rounded-full blur-3xl"></div>
         </div>
         
         <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
-          <div className="max-w-3xl mx-auto md:mx-0 md:text-left banner-content">
+          <div className="max-w-4xl mx-auto text-center banner-content">
             <FadeInUp>
               <span className="inline-flex items-center gap-2 text-brand-primary font-semibold uppercase tracking-widest text-xs md:text-sm mb-4 md:mb-6">
                 <span className="w-2 h-2 bg-brand-primary rounded-full"></span>
@@ -313,7 +189,7 @@ const Services = () => {
               </h1>
             </FadeInUp>
             <FadeInUp>
-              <p className="text-xs sm:text-sm md:text-lg lg:text-xl text-gray-300 mb-4 md:mb-6 lg:mb-8 max-w-2xl">
+              <p className="text-xs sm:text-sm md:text-lg lg:text-xl text-gray-300 mb-4 md:mb-6 lg:mb-8 max-w-2xl mx-auto">
                 From concept to deployment, we deliver end-to-end technology solutions that drive growth and innovation.
               </p>
             </FadeInUp>
